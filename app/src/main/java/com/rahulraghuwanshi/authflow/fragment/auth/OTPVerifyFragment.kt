@@ -1,6 +1,7 @@
 package com.rahulraghuwanshi.authflow.fragment.auth
 
 import android.app.Dialog
+import android.content.IntentFilter
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,10 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.navGraphViewModels
+import com.google.android.gms.auth.api.phone.SmsRetriever
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.rahulraghuwanshi.authflow.R
+import com.rahulraghuwanshi.authflow.SMSReader
 import com.rahulraghuwanshi.authflow.databinding.FragmentOTPVerifyBinding
 import com.rahulraghuwanshi.authflow.extension.progressDialog
 import com.rahulraghuwanshi.authflow.extension.showToast
@@ -31,6 +34,8 @@ class OTPVerifyFragment : Fragment() {
     private lateinit var dialog: Dialog
 
     private lateinit var verificationId: String
+
+    private lateinit var smsReader : SMSReader
 
     @Inject
     lateinit var auth: FirebaseAuth
@@ -64,6 +69,22 @@ class OTPVerifyFragment : Fragment() {
         }
 
         initView()
+        otpReceiver()
+    }
+
+    private fun otpReceiver() {
+        smsReader = SMSReader()
+        requireActivity().registerReceiver(smsReader, IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION))
+        smsReader.init(object : SMSReader.OTPSMSListener{
+            override fun onSuccess(otp: String) {
+                viewModel.otp.value = otp
+                verifyPhoneNumberWithCode(otp)
+            }
+
+            override fun onFailure(msg: String) {
+                showToast(msg)
+            }
+        })
     }
 
     private fun navigateToLogin() {
@@ -117,6 +138,11 @@ class OTPVerifyFragment : Fragment() {
 
             txtNumber.text = viewModel?.number?.value
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        requireActivity().unregisterReceiver(smsReader)
     }
 
     override fun onDestroyView() {
