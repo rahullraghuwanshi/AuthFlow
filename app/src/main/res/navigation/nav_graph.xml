@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.rahulraghuwanshi.authflow.fragment.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.rahulraghuwanshi.authflow.fragment.auth.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo='@id/nav_graph'
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_OTPVerifyFragment"
+            app:destination="@id/OTPVerifyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/OTPVerifyFragment"
+        android:name="com.rahulraghuwanshi.authflow.fragment.auth.OTPVerifyFragment"
+        android:label="fragment_o_t_p_verify"
+        tools:layout="@layout/fragment_o_t_p_verify">
+
+        <argument
+            android:name="verificationToken"
+            app:argType="string"
+            app:nullable="false" />
+
+        <action
+            android:id="@+id/action_OTPVerifyFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo='@id/nav_graph'
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_OTPVerifyFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo='@id/nav_graph'
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>

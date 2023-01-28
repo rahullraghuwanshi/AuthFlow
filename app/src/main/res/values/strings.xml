@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AuthFlow</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="icon">Icon</string>
+    <string name="enter_your_mobile_number">Enter your Mobile Number</string>
+    <string name="_123467890">123467890</string>
+    <string name="or">or</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="i_agree_to_receive_important_updates_via_whatsapp">I agree to receive important updates via WhatsApp</string>
+    <string name="by_continuing_i_accept_terms_amp_conditions_and_privacy_policy"><![CDATA[By continuing, I accept Terms & Conditions and Privacy Policy]]></string>
+    <string name="get_otp">Get OTP</string>
+    <string name="_123456">123456</string>
+    <string name="enter_otp_sent_to">Enter OTP sent to</string>
+    <string name="_91_9535312918">+91 9535312918</string>
+    <string name="verify">Verify</string>
+    <string name="home_screen">Home Screen</string>
+    <string name="sports_tribe">Sports Tribe</string>
+</resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "756938000692",
+    "project_id": "authflow-415f2",
+    "storage_bucket": "authflow-415f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:756938000692:android:a7fc6214d74093d2a2fd61",
+        "android_client_info": {
+          "package_name": "com.rahulraghuwanshi.authflow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "756938000692-mf00ggefelas5j8k9m709ld2oep2p49f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-mF8w2fDpENpL-X51g5yr42jYC3qVvwg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "756938000692-mf00ggefelas5j8k9m709ld2oep2p49f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
